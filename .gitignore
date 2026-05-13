@@ -1,0 +1,15 @@
+﻿# Root: ignore everything by default
+/*
+
+# Keep only root instructions and ignore rules
+!/.gitignore
+!/AGENTS.md
+
+# Expose top-level folders
+!/*/
+
+# Inside top-level folders: ignore all contents
+/*/*
+
+# ...except AGENTS.md in each top-level folder
+!/*/AGENTS.md
