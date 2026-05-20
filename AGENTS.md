@@ -32,7 +32,8 @@ Note: right now every tracked repository in this workspace points to the same `o
 │   ├── eco-landing/            # https://gitlab.com/ruyou/egormity-dev-env.git
 │   └── eko-front/              # https://gitlab.com/ruyou/egormity-dev-env.git
 │
-├── expert-teach-center/        # Expert Teach Center: webview project
+├── expert-teach-center/        # Expert Teach Center: web app + webview shell
+│   ├── expert-path-app/        # https://gitlab.com/ruyou/egormity-dev-env.git
 │   └── expert-teach-center-vebview/ # https://gitlab.com/ruyou/egormity-dev-env.git
 │
 ├── mincult/                    # Mincult: admin, frontend, and mobile apps
