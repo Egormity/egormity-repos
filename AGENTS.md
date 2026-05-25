@@ -24,8 +24,9 @@ Note: repository remotes may differ by project; links below are current `origin`
 â”œâ”€â”€ amazi/                      # Amazi AI platform
 â”‚   â””â”€â”€ crm-ai-agent/           # https://gitlab.com/mihrjakovsv/crm-ai-agent.git
 â”‚
-â”œâ”€â”€ bigam/                      # Bigam: webview project
-â”‚   â””â”€â”€ bigam-webview/          # https://gitlab.com/ruyou/bigam-webview.git
+â”œâ”€â”€ bigam/                      # Bigam: webview projects
+â”‚   â”œâ”€â”€ bigam-webview/          # https://gitlab.com/ruyou/bigam-webview.git
+â”‚   â””â”€â”€ bigam_v5/               # https://gitlab.com/ruyou/bigam_v5.git
 â”‚
 â”œâ”€â”€ eco-bike/                   # Eco Bike: landing page and frontend
 â”‚   â”œâ”€â”€ eco-landing/            # https://gitlab.com/ruyou/eco-landing.git
