@@ -1,2 +1,7 @@
-﻿# Ignore every folder in the repository
-*/
+# Ignore generated repository folders and their contents.
+/*
+
+# Keep root metadata and documentation tracked.
+!/.gitignore
+!/AGENTS.md
+!/README.md
