@@ -4,6 +4,8 @@ This repository contains generated project files and supporting workspace conten
 
 All content in this repository was generated with [Egormity/egormity-tools](https://github.com/Egormity/egormity-tools).
 
+The installed CLI command is `egormity_git_tools`.
+
 ## My workflow
 
 Use the root workflow script to regenerate the repository workspace from the configured GitHub and GitLab accounts.
