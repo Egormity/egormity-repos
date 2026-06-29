@@ -3,5 +3,8 @@
 
 # Keep root metadata and documentation tracked.
 !/.gitignore
+!/.gitattributes
 !/AGENTS.md
 !/README.md
+!/run-workflow.ps1
+!/run-workflow.sh
