@@ -9,6 +9,7 @@ The installed CLI command is `egormity_git_tools`.
 ## My workflow
 
 Use the root workflow script to regenerate the repository workspace from the configured GitHub and GitLab accounts.
+Each script checks namespace access first. If a user or namespace is not accessible, it is skipped and the rest of the workflow continues.
 
 ### Windows
 
@@ -35,14 +36,16 @@ chmod +x ./run-workflow.sh
 
 ## Workflow steps
 
-The scripts run these steps in order and stop on the first failure:
+The scripts run these steps in order. Inaccessible namespaces and failed namespace-specific steps are reported and skipped:
 
-1. Generate all docs for every configured account.
-2. Clone repositories from `https://github.com/Egormity`.
-3. Generate AGENTS.md files for the Egormity workspace.
-4. Clone repositories from the RuYou-related GitLab/GitHub accounts into `ruyou`.
-5. Generate AGENTS.md files for the combined RuYou workspace.
-6. Generate separate AGENTS.md files inside `ruyou` for:
+1. Check access for every configured account URL with `egormity_git_tools get_account_info`.
+2. Skip inaccessible namespaces.
+3. Generate all docs for every accessible configured account.
+4. Clone repositories from `https://github.com/Egormity` when it is accessible.
+5. Generate AGENTS.md files for the Egormity workspace when it is accessible.
+6. Clone repositories from accessible RuYou-related GitLab/GitHub accounts into `ruyou`.
+7. Generate AGENTS.md files for the combined accessible RuYou workspace.
+8. Generate separate AGENTS.md files inside `ruyou` for accessible namespaces:
    - `https://gitlab.com/ruyou`
    - `https://gitlab.com/mihrjakovsv`
    - `https://gitlab.com/black_ruyou`
