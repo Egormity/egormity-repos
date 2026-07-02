@@ -7,6 +7,7 @@ RUYOU_SOURCES=(
   "https://gitlab.com/ruyou"
   "https://gitlab.com/mihrjakovsv"
   "https://gitlab.com/black_ruyou"
+  "https://github.com/crmgpp"
   "https://github.com/timecapspro"
 )
 ALL_SOURCES=("$EGORMITY_SOURCE" "${RUYOU_SOURCES[@]}")

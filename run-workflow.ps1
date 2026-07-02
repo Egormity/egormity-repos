@@ -6,6 +6,7 @@ $RuyouSources = @(
     "https://gitlab.com/ruyou",
     "https://gitlab.com/mihrjakovsv",
     "https://gitlab.com/black_ruyou",
+    "https://github.com/crmgpp",
     "https://github.com/timecapspro"
 )
 $AllSources = @($EgormitySource) + $RuyouSources

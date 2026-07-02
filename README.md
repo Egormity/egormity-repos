@@ -49,6 +49,7 @@ The scripts run these steps in order. Inaccessible namespaces and failed namespa
    - `https://gitlab.com/ruyou`
    - `https://gitlab.com/mihrjakovsv`
    - `https://gitlab.com/black_ruyou`
+   - `https://github.com/crmgpp`
    - `https://github.com/timecapspro`
 
 ## egormity_git_tools reference
