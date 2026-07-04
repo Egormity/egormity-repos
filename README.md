@@ -8,6 +8,15 @@ The installed CLI command is `egormity_git_tools`.
 
 ## My workflow
 
+To clone every repository listed in `AGENTS.md` from Windows, macOS, or Linux:
+
+```bash
+npm run clone
+```
+
+The entry script clones Egormity repositories into `egormity/<repo>` and
+RuYou-related repositories into `ruyou/<user>/<repo>`.
+
 Use the root workflow script to regenerate the repository workspace from the configured GitHub and GitLab accounts.
 Each script checks namespace access first. If a user or namespace is not accessible, it is skipped and the rest of the workflow continues.
 

@@ -8,3 +8,7 @@
 !/README.md
 !/run-workflow.ps1
 !/run-workflow.sh
+!/entry.js
+!/package.json
+!/_lib/
+!/_lib/**
