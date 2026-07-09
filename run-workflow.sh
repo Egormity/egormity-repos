@@ -53,7 +53,7 @@ contains_source() {
 test_source_access() {
   local source="$1"
 
-  egormity_git_tools get_account_info "$source" account.json "$PROBE_DIR" >/dev/null 2>&1
+  egormity_git get_account_info "$source" account.json "$PROBE_DIR" >/dev/null 2>&1
 }
 
 run_optional_step() {
@@ -68,8 +68,8 @@ run_optional_step() {
   fi
 }
 
-if ! command -v egormity_git_tools >/dev/null 2>&1; then
-  echo "egormity_git_tools was not found in PATH." >&2
+if ! command -v egormity_git >/dev/null 2>&1; then
+  echo "egormity_git was not found in PATH." >&2
   exit 127
 fi
 
@@ -93,14 +93,14 @@ if [[ "${#ACCESSIBLE_SOURCES[@]}" -eq 0 ]]; then
 fi
 
 run_optional_step "Generate all docs" \
-  egormity_git_tools generate_agents "$(join_sources "${ACCESSIBLE_SOURCES[@]}")" ./
+  egormity_git generate_agents "$(join_sources "${ACCESSIBLE_SOURCES[@]}")" ./
 
 if contains_source "$EGORMITY_SOURCE" "${ACCESSIBLE_SOURCES[@]}"; then
   run_optional_step "Clone Egormity repositories" \
-    egormity_git_tools clone_all "$EGORMITY_SOURCE"
+    egormity_git clone_all "$EGORMITY_SOURCE"
 
   run_optional_step "Generate Egormity AGENTS.md files" \
-    egormity_git_tools generate_agents "$EGORMITY_SOURCE" ./egormity
+    egormity_git generate_agents "$EGORMITY_SOURCE" ./egormity
 fi
 
 for source in "${RUYOU_SOURCES[@]}"; do
@@ -111,17 +111,17 @@ done
 
 if [[ "${#ACCESSIBLE_RUYOU_SOURCES[@]}" -gt 0 ]]; then
   run_optional_step "Clone RuYou repositories" \
-    egormity_git_tools clone_all "$(join_sources "${ACCESSIBLE_RUYOU_SOURCES[@]}")" ruyou
+    egormity_git clone_all "$(join_sources "${ACCESSIBLE_RUYOU_SOURCES[@]}")" ruyou
 
   run_optional_step "Generate RuYou workspace AGENTS.md files" \
-    egormity_git_tools generate_agents "$(join_sources "${ACCESSIBLE_RUYOU_SOURCES[@]}")" ruyou
+    egormity_git generate_agents "$(join_sources "${ACCESSIBLE_RUYOU_SOURCES[@]}")" ruyou
 
   if [[ -d ruyou ]]; then
     cd ruyou
 
     for source in "${ACCESSIBLE_RUYOU_SOURCES[@]}"; do
       run_optional_step "Generate $source AGENTS.md files" \
-        egormity_git_tools generate_agents "$source"
+        egormity_git generate_agents "$source"
     done
   else
     echo "Warning: skipping per-namespace RuYou AGENTS.md files because the ruyou folder does not exist." >&2

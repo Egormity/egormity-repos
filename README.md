@@ -4,7 +4,7 @@ This repository contains generated project files and supporting workspace conten
 
 All content in this repository was generated with [Egormity/egormity-tools](https://github.com/Egormity/egormity-tools).
 
-The installed CLI command is `egormity_git_tools`.
+The installed CLI command is `egormity_git`.
 
 ## My workflow
 
@@ -47,7 +47,7 @@ chmod +x ./run-workflow.sh
 
 The scripts run these steps in order. Inaccessible namespaces and failed namespace-specific steps are reported and skipped:
 
-1. Check access for every configured account URL with `egormity_git_tools get_account_info`.
+1. Check access for every configured account URL with `egormity_git get_account_info`.
 2. Skip inaccessible namespaces.
 3. Generate all docs for every accessible configured account.
 4. Clone repositories from `https://github.com/Egormity` when it is accessible.
@@ -61,16 +61,16 @@ The scripts run these steps in order. Inaccessible namespaces and failed namespa
    - `https://github.com/crmgpp`
    - `https://github.com/timecapspro`
 
-## egormity_git_tools reference
+## egormity_git reference
 
-Reusable help output from `egormity_git_tools --help`:
+Reusable help output from `egormity_git --help`:
 
 ```text
-egormity_git_tools 0.3.6
+egormity_git 0.4.0
 
 Usage:
-  egormity_git_tools <command> [args]
-  python -m egormity_git_tools <command> [args]
+  egormity_git <command> [args]
+  python -m egormity_git <command> [args]
   Use comma or semicolon separated URLs for multi-account commands.
 
 Commands:

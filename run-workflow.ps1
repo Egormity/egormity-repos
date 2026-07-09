@@ -11,7 +11,7 @@ $RuyouSources = @(
 )
 $AllSources = @($EgormitySource) + $RuyouSources
 $SkippedSources = New-Object System.Collections.Generic.List[string]
-$ProbeDir = Join-Path ([System.IO.Path]::GetTempPath()) "egormity_git_tools_probe_$([System.Guid]::NewGuid())"
+$ProbeDir = Join-Path ([System.IO.Path]::GetTempPath()) "egormity_git_probe_$([System.Guid]::NewGuid())"
 
 function Join-Sources {
     param(
@@ -28,7 +28,7 @@ function Test-SourceAccess {
         [string] $Source
     )
 
-    & egormity_git_tools get_account_info $Source "account.json" $ProbeDir *> $null
+    & egormity_git get_account_info $Source "account.json" $ProbeDir *> $null
     return ($LASTEXITCODE -eq 0)
 }
 
@@ -53,8 +53,8 @@ function Invoke-OptionalStep {
     return $true
 }
 
-if (-not (Get-Command egormity_git_tools -ErrorAction SilentlyContinue)) {
-    Write-Error "egormity_git_tools was not found in PATH."
+if (-not (Get-Command egormity_git -ErrorAction SilentlyContinue)) {
+    Write-Error "egormity_git was not found in PATH."
 }
 
 New-Item -ItemType Directory -Force -Path $ProbeDir | Out-Null
@@ -83,16 +83,16 @@ try {
     }
 
     Invoke-OptionalStep "Generate all docs" {
-        egormity_git_tools generate_agents (Join-Sources $AccessibleSources) ./
+        egormity_git generate_agents (Join-Sources $AccessibleSources) ./
     } | Out-Null
 
     if ($AccessibleSources -contains $EgormitySource) {
         Invoke-OptionalStep "Clone Egormity repositories" {
-            egormity_git_tools clone_all $EgormitySource
+            egormity_git clone_all $EgormitySource
         } | Out-Null
 
         Invoke-OptionalStep "Generate Egormity AGENTS.md files" {
-            egormity_git_tools generate_agents $EgormitySource ./egormity
+            egormity_git generate_agents $EgormitySource ./egormity
         } | Out-Null
     }
 
@@ -100,11 +100,11 @@ try {
 
     if ($AccessibleRuyouSources.Count -gt 0) {
         Invoke-OptionalStep "Clone RuYou repositories" {
-            egormity_git_tools clone_all (Join-Sources $AccessibleRuyouSources) ruyou
+            egormity_git clone_all (Join-Sources $AccessibleRuyouSources) ruyou
         } | Out-Null
 
         Invoke-OptionalStep "Generate RuYou workspace AGENTS.md files" {
-            egormity_git_tools generate_agents (Join-Sources $AccessibleRuyouSources) ruyou
+            egormity_git generate_agents (Join-Sources $AccessibleRuyouSources) ruyou
         } | Out-Null
 
         if (Test-Path -Path "ruyou" -PathType Container) {
@@ -112,7 +112,7 @@ try {
             try {
                 foreach ($Source in $AccessibleRuyouSources) {
                     Invoke-OptionalStep "Generate $Source AGENTS.md files" {
-                        egormity_git_tools generate_agents $Source
+                        egormity_git generate_agents $Source
                     } | Out-Null
                 }
             }
