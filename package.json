@@ -1,8 +1,8 @@
 {
   "name": "egormity-repos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
-  "description": "Workspace clone entry point for Egormity and RuYou repositories.",
+  "description": "Workspace clone entry point for Egormity, Havaslo, and RuYou repositories.",
   "scripts": {
     "clone": "node entry.js",
     "clone:all": "node entry.js"

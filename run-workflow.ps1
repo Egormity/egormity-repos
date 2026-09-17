@@ -2,6 +2,7 @@ $ErrorActionPreference = "Stop"
 
 $RootDir = $PSScriptRoot
 $EgormitySource = "https://github.com/Egormity"
+$HavasloSource = "https://github.com/Havaslo"
 $RuyouSources = @(
     "https://gitlab.com/ruyou",
     "https://gitlab.com/mihrjakovsv",
@@ -9,7 +10,7 @@ $RuyouSources = @(
     "https://github.com/crmgpp",
     "https://github.com/timecapspro"
 )
-$AllSources = @($EgormitySource) + $RuyouSources
+$AllSources = @($EgormitySource, $HavasloSource) + $RuyouSources
 $SkippedSources = New-Object System.Collections.Generic.List[string]
 $ProbeDir = Join-Path ([System.IO.Path]::GetTempPath()) "egormity_git_tools_probe_$([System.Guid]::NewGuid())"
 
@@ -93,6 +94,16 @@ try {
 
         Invoke-OptionalStep "Generate Egormity AGENTS.md files" {
             egormity_git_tools generate_agents $EgormitySource ./egormity
+        } | Out-Null
+    }
+
+    if ($AccessibleSources -contains $HavasloSource) {
+        Invoke-OptionalStep "Clone Havaslo repositories" {
+            egormity_git_tools clone_all $HavasloSource Havaslo
+        } | Out-Null
+
+        Invoke-OptionalStep "Generate Havaslo AGENTS.md files" {
+            egormity_git_tools generate_agents $HavasloSource Havaslo
         } | Out-Null
     }
 

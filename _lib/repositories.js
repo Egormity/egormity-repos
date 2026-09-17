@@ -17,6 +17,10 @@ function targetFor(owner, repoName) {
     return path.join(rootDir, "egormity", repoName);
   }
 
+  if (owner.toLowerCase() === "havaslo") {
+    return path.join(rootDir, "Havaslo", repoName);
+  }
+
   return path.join(rootDir, "ruyou", owner, repoName);
 }
 

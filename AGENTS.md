@@ -113,3 +113,4 @@
 109. timecapspro/expert-path-app => https://github.com/timecapspro/expert-path-app
 110. timecapspro/films => https://github.com/timecapspro/films
 111. timecapspro/taste_index => https://github.com/timecapspro/taste_index
+112. Havaslo/Alsma => https://github.com/Havaslo/Alsma
