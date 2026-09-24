@@ -15,7 +15,8 @@ npm run clone
 ```
 
 The entry script clones Egormity repositories into `egormity/<repo>`,
-Havaslo repositories into `Havaslo/<repo>`, and
+Havaslo repositories into `Havaslo/<repo>`,
+avsterkvnst-create repositories into `avsterkvnst-create/<repo>`, and
 RuYou-related repositories into `ruyou/<user>/<repo>`.
 
 Use the root workflow script to regenerate the repository workspace from the configured GitHub and GitLab accounts.
@@ -54,14 +55,15 @@ The scripts run these steps in order. Inaccessible namespaces and failed namespa
 4. Clone repositories from `https://github.com/Egormity` when it is accessible.
 5. Generate AGENTS.md files for the Egormity workspace when it is accessible.
 6. Clone repositories from `https://github.com/Havaslo` into `Havaslo` and generate its AGENTS.md when it is accessible.
-7. Clone repositories from accessible RuYou-related GitLab/GitHub accounts into `ruyou`.
-8. Generate AGENTS.md files for the combined accessible RuYou workspace.
-9. Generate separate AGENTS.md files inside `ruyou` for accessible namespaces:
-   - `https://gitlab.com/ruyou`
-   - `https://gitlab.com/mihrjakovsv`
-   - `https://gitlab.com/black_ruyou`
-   - `https://github.com/crmgpp`
-   - `https://github.com/timecapspro`
+7. Clone repositories from `https://github.com/avsterkvnst-create` into `avsterkvnst-create` and generate its AGENTS.md when it is accessible. Private repositories require access through the authenticated GitHub account.
+8. Clone repositories from accessible RuYou-related GitLab/GitHub accounts into `ruyou`.
+9. Generate AGENTS.md files for the combined accessible RuYou workspace.
+10. Generate separate AGENTS.md files inside `ruyou` for accessible namespaces:
+    - `https://gitlab.com/ruyou`
+    - `https://gitlab.com/mihrjakovsv`
+    - `https://gitlab.com/black_ruyou`
+    - `https://github.com/crmgpp`
+    - `https://github.com/timecapspro`
 
 ## egormity_git_tools reference
 

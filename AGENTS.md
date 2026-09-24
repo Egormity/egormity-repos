@@ -114,3 +114,5 @@
 110. timecapspro/films => https://github.com/timecapspro/films
 111. timecapspro/taste_index => https://github.com/timecapspro/taste_index
 112. Havaslo/Alsma => https://github.com/Havaslo/Alsma
+113. avsterkvnst-create/CertExpert-Amazi-Sync-v3 => https://github.com/avsterkvnst-create/CertExpert-Amazi-Sync-v3
+114. avsterkvnst-create/snake => https://github.com/avsterkvnst-create/snake

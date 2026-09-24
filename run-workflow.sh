@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EGORMITY_SOURCE="https://github.com/Egormity"
 HAVASLO_SOURCE="https://github.com/Havaslo"
+AVSTERKVNST_SOURCE="https://github.com/avsterkvnst-create"
 RUYOU_SOURCES=(
   "https://gitlab.com/ruyou"
   "https://gitlab.com/mihrjakovsv"
@@ -11,7 +12,7 @@ RUYOU_SOURCES=(
   "https://github.com/crmgpp"
   "https://github.com/timecapspro"
 )
-ALL_SOURCES=("$EGORMITY_SOURCE" "$HAVASLO_SOURCE" "${RUYOU_SOURCES[@]}")
+ALL_SOURCES=("$EGORMITY_SOURCE" "$HAVASLO_SOURCE" "$AVSTERKVNST_SOURCE" "${RUYOU_SOURCES[@]}")
 ACCESSIBLE_SOURCES=()
 ACCESSIBLE_RUYOU_SOURCES=()
 SKIPPED_SOURCES=()
@@ -110,6 +111,14 @@ if contains_source "$HAVASLO_SOURCE" "${ACCESSIBLE_SOURCES[@]}"; then
 
   run_optional_step "Generate Havaslo AGENTS.md files" \
     egormity_git_tools generate_agents "$HAVASLO_SOURCE" Havaslo
+fi
+
+if contains_source "$AVSTERKVNST_SOURCE" "${ACCESSIBLE_SOURCES[@]}"; then
+  run_optional_step "Clone avsterkvnst-create repositories" \
+    egormity_git_tools clone_all "$AVSTERKVNST_SOURCE" avsterkvnst-create
+
+  run_optional_step "Generate avsterkvnst-create AGENTS.md files" \
+    egormity_git_tools generate_agents "$AVSTERKVNST_SOURCE" avsterkvnst-create
 fi
 
 for source in "${RUYOU_SOURCES[@]}"; do

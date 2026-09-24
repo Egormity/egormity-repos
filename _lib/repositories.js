@@ -21,6 +21,10 @@ function targetFor(owner, repoName) {
     return path.join(rootDir, "Havaslo", repoName);
   }
 
+  if (owner.toLowerCase() === "avsterkvnst-create") {
+    return path.join(rootDir, "avsterkvnst-create", repoName);
+  }
+
   return path.join(rootDir, "ruyou", owner, repoName);
 }
 

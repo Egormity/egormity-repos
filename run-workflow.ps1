@@ -3,6 +3,7 @@ $ErrorActionPreference = "Stop"
 $RootDir = $PSScriptRoot
 $EgormitySource = "https://github.com/Egormity"
 $HavasloSource = "https://github.com/Havaslo"
+$AvsterkvnstSource = "https://github.com/avsterkvnst-create"
 $RuyouSources = @(
     "https://gitlab.com/ruyou",
     "https://gitlab.com/mihrjakovsv",
@@ -10,7 +11,7 @@ $RuyouSources = @(
     "https://github.com/crmgpp",
     "https://github.com/timecapspro"
 )
-$AllSources = @($EgormitySource, $HavasloSource) + $RuyouSources
+$AllSources = @($EgormitySource, $HavasloSource, $AvsterkvnstSource) + $RuyouSources
 $SkippedSources = New-Object System.Collections.Generic.List[string]
 $ProbeDir = Join-Path ([System.IO.Path]::GetTempPath()) "egormity_git_tools_probe_$([System.Guid]::NewGuid())"
 
@@ -104,6 +105,16 @@ try {
 
         Invoke-OptionalStep "Generate Havaslo AGENTS.md files" {
             egormity_git_tools generate_agents $HavasloSource Havaslo
+        } | Out-Null
+    }
+
+    if ($AccessibleSources -contains $AvsterkvnstSource) {
+        Invoke-OptionalStep "Clone avsterkvnst-create repositories" {
+            egormity_git_tools clone_all $AvsterkvnstSource avsterkvnst-create
+        } | Out-Null
+
+        Invoke-OptionalStep "Generate avsterkvnst-create AGENTS.md files" {
+            egormity_git_tools generate_agents $AvsterkvnstSource avsterkvnst-create
         } | Out-Null
     }
 
